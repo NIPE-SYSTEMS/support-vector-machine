@@ -2,3 +2,4 @@
 .ipython
 .jupyter
 .bash_history
+.cache
