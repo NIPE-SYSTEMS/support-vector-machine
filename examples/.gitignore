@@ -3,3 +3,4 @@
 .jupyter
 .bash_history
 .cache
+.plotly/.credentials
