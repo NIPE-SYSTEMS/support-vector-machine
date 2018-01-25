@@ -95,7 +95,7 @@
     %     \vspace{3mm}
 
     %     \begin{itemize}
-    %         \item Hyperebene: $ \boldsymbol{w} \cdot \boldsymbol{x} + b = 0 $
+    %         \item Hyperebene: $ \boldsymbol{w}^T \boldsymbol{x} + b = 0 $
     %     \end{itemize}
     % }
 
@@ -152,9 +152,8 @@
     \begin{itemize}
         \item Anzahl an Trainingspunkten $ m \in \mathbb{R} $
         \item Input $ \boldsymbol{x} \in \mathbb{R}^N $
-        \item Output $ \boldsymbol{y} \in \{ -1, +1 \} $
+        \item Output $ y \in \{ -1, +1 \} $
         \item Trainingsset $S \in (\mathbb{R}^N \times \{ -1, +1 \})^m $
-        \item Trainingsset $S \in (\boldsymbol{x} \times \boldsymbol{y})^m $
     \end{itemize}
 
     \vspace{2mm}
@@ -186,34 +185,34 @@
 
     \only<1> {
         \begin{itemize}
-            \item Hyperebene: $ H' = \boldsymbol{w}' \cdot \boldsymbol{x} + b' = 0 $
+            \item Hyperebene: $ H' = \boldsymbol{w}'^T \boldsymbol{x} + b' = 0 $
             \item Gutter: $H_+$ und $H_-$
             \item Hyperbene frei skalierbar
         \end{itemize}
     }\only<2> {
         \begin{itemize}
-            \item Hyperebene: $ H' = \boldsymbol{w}' \cdot \boldsymbol{x} + b' = 0 $
+            \item Hyperebene: $ H' = \boldsymbol{w}'^T \boldsymbol{x} + b' = 0 $
             \item Gutter constraint (GC):
                 \begin{align*}
-                    & \boldsymbol{w} \cdot \boldsymbol{x}_i + b = y_i, \quad \forall \text{ support vectors } \in \boldsymbol{x} \\
-                    & y_i ( \boldsymbol{w} \cdot \boldsymbol{x}_i + b ) = 1 \quad \forall \text{ support vectors } \in \boldsymbol{x} \\
+                    & \boldsymbol{w}^T \boldsymbol{x}_i + b = y_i, \quad \forall \text{ support vectors } \in \boldsymbol{x} \\
+                    & y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) = 1 \quad \forall \text{ support vectors } \in \boldsymbol{x} \\
                 \end{align*}
             \item Um GC zu erfüllen: $ \boldsymbol{w} $ und $b$ werden um $ c \in \mathbb{R} $ skaliert:
                 \begin{align*}
-                    & H = c ( \boldsymbol{w} \cdot \boldsymbol{x} + b ) = 0 \\
-                    & \boldsymbol{w} = c \cdot \boldsymbol{w}' \\
-                    & b = c \cdot b' \\
+                    & H = c ( \boldsymbol{w}^T \boldsymbol{x} + b ) = 0 \\
+                    & \boldsymbol{w} = c^T \boldsymbol{w}' \\
+                    & b = c^T b' \\
                 \end{align*}
             \item $H$ heißt auch kanonische Hyperebene
         \end{itemize}
     }\only<3> {
         \begin{itemize}
-            \item Kanonische Hyperebene: $ H = \boldsymbol{w} \cdot \boldsymbol{x} + b = 0 $
+            \item Kanonische Hyperebene: $ H = \boldsymbol{w}^T \boldsymbol{x} + b = 0 $
             \item Kanonische Hyperebene ermöglicht Klassifizierung:
                 \begin{equation*}
                     h(x_i) = \begin{cases}
-                        +1 & \text{ wenn } \boldsymbol{w} \cdot \boldsymbol{x}_i + b \geq 0 \\
-                        -1 & \text{ wenn } \boldsymbol{w} \cdot \boldsymbol{x}_i + b \leq 0 \\
+                        +1 & \text{ wenn } \boldsymbol{w}^T \boldsymbol{x}_i + b \geq 0 \\
+                        -1 & \text{ wenn } \boldsymbol{w}^T \boldsymbol{x}_i + b \leq 0 \\
                     \end{cases}
                 \end{equation*}
         \end{itemize}
@@ -249,8 +248,8 @@
         \hfill
         \begin{minipage}{0.4\textwidth}
             \begin{itemize}
-                \item<1-> Hyperebene: $ H = \boldsymbol{w} \cdot \boldsymbol{x} + b = 0 $
-                \item<1-> Gutter constraint: $ \boldsymbol{w} \cdot \boldsymbol{x}_i + b = y_i, \quad \forall \text{ s. v. } \in \boldsymbol{x} $
+                \item<1-> Hyperebene: $ H = \boldsymbol{w}^T \boldsymbol{x} + b = 0 $
+                \item<1-> Gutter constraint: $ \boldsymbol{w}^T \boldsymbol{x}_i + b = y_i, \quad \forall \text{ s. v. } \in \boldsymbol{x} $
             \end{itemize} 
         \end{minipage}
     \end{figure}
@@ -265,7 +264,7 @@
                 \end{matrix} \right) \\
                 \left( \begin{matrix}
                     2 & 0 \\
-                \end{matrix} \right) \cdot \left( \begin{matrix}
+                \end{matrix} \right)^T \left( \begin{matrix}
                     3 \\
                     0 \\
                 \end{matrix} \right) + b = 0 &\Rightarrow b = -6 \\
@@ -302,8 +301,8 @@
         \hfill
         \begin{minipage}{0.4\textwidth}
             \begin{itemize}
-                \item<1-> Hyperebene: $ H = \boldsymbol{w} \cdot \boldsymbol{x} + b = 0 $
-                \item<1-> Gutter constraint: $ \boldsymbol{w} \cdot \boldsymbol{x}_i + b = y_i, \quad \forall \text{ s. v. } \in \boldsymbol{x} $
+                \item<1-> Hyperebene: $ H = \boldsymbol{w}^T \boldsymbol{x} + b = 0 $
+                \item<1-> Gutter constraint: $ \boldsymbol{w}^T \boldsymbol{x}_i + b = y_i, \quad \forall \text{ s. v. } \in \boldsymbol{x} $
             \end{itemize} 
         \end{minipage}
     \end{figure}
@@ -313,10 +312,10 @@
             \begin{align*}
                 c \left( \left( \begin{matrix}
                     2 & 0 \\
-                \end{matrix} \right) \cdot \left( \begin{matrix}
+                \end{matrix} \right)^T \left( \begin{matrix}
                     2 \\
                     1 \\
-                \end{matrix} \right) - 6 \overset{!}{=} +1 \right) &\Rightarrow c = -0.5 \\
+                \end{matrix} \right) - 6 \right) \overset{!}{=} +1 &\Rightarrow c = -0.5 \\
             \end{align*}
         \item<2-> Somit gilt für die kanonische Hyperebene:
             \begin{align*}
@@ -330,7 +329,7 @@
             \begin{align*}
                 \left( \begin{matrix}
                     -1 & 0 \\
-                \end{matrix} \right) \cdot \left( \begin{matrix}
+                \end{matrix} \right)^T \left( \begin{matrix}
                     4 \\
                     1 \\
                 \end{matrix} \right) + 3 = -1
@@ -362,8 +361,8 @@
                 \item<1-> Klassifizierung:
                     \begin{equation*}
                         h(x_i) = \begin{cases}
-                            +1 & \text{if } \boldsymbol{w} \cdot \boldsymbol{x}_i + b \geq 0 \\
-                            -1 & \text{if } \boldsymbol{w} \cdot \boldsymbol{x}_i + b \leq 0 \\
+                            +1 & \text{if } \boldsymbol{w}^T \boldsymbol{x}_i + b \geq 0 \\
+                            -1 & \text{if } \boldsymbol{w}^T \boldsymbol{x}_i + b \leq 0 \\
                         \end{cases}
                     \end{equation*}
                 \item<1-> Parameter der kanonischen Hyperebene
@@ -383,7 +382,7 @@
             \begin{align*}
                 \left( \begin{matrix}
                     -1 & 0 \\
-                \end{matrix} \right) \cdot \left( \begin{matrix}
+                \end{matrix} \right)^T \left( \begin{matrix}
                     5 \\
                     3 \\
                 \end{matrix} \right) + 3 = -2
@@ -416,11 +415,11 @@
                 \item Projektionseigenschaft des Skalarprodukts
                 \item Breite des margin $\rho$:
                     \begin{equation*}
-                        \rho = (\boldsymbol{x_p} - \boldsymbol{x_n}) \cdot \frac{\boldsymbol{w}}{\Vert \boldsymbol{w} \Vert}
+                        \rho = (\boldsymbol{x_p} - \boldsymbol{x_n})^T \frac{\boldsymbol{w}}{\Vert \boldsymbol{w} \Vert}
                     \end{equation*}
                 \item Gutter constraint: 
                     \begin{equation*}
-                        y_i ( \boldsymbol{w} \cdot \boldsymbol{x}_i + b ) = 1 \quad \forall \text{ support vectors } \in \boldsymbol{x}
+                        y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) = 1 \quad \forall \text{ s.v. } \in \boldsymbol{x}
                     \end{equation*}
             \end{itemize} 
         \end{minipage}
@@ -430,7 +429,7 @@
             \item Ziel einer SVM: Maximiere den margin
                 \begin{align*}
                     & \max \frac{2}{\Vert \boldsymbol{w} \Vert} \Leftrightarrow \min \Vert \boldsymbol{w} \Vert \Leftrightarrow \min \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 \\
-                    & \text{u.d.N. } y_i ( \boldsymbol{w} \cdot \boldsymbol{x}_i + b ) - 1 \geq 0 \\
+                    & \text{u.d.N. } y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) - 1 \geq 0 \\
                 \end{align*}
         \end{itemize}
     \end{figure}
@@ -445,7 +444,7 @@
     \begin{itemize}
         \item Langrange multipliers:
             \begin{align*}
-                L = \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 - \sum \alpha_i \left[ y_i ( \boldsymbol{w} \cdot \boldsymbol{x}_i + b) - 1 \right] \\
+                L = \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 - \sum \alpha_i \left[ y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b) - 1 \right] \\
             \end{align*}
         \item Suche nach den Extremum
             \begin{align*}
@@ -454,15 +453,15 @@
             \end{align*}
         \item $\boldsymbol{w}$ in $L$ eingesetzt:
             \begin{align*}
-                L &= \frac{1}{2} (\sum_i \alpha_i y_i \boldsymbol{x}_i) \cdot (\sum_j \alpha_j y_j \boldsymbol{x}_j) - (\sum_i \alpha_i y_i \boldsymbol{x}_i) \cdot (\sum_j \alpha_j y_j \boldsymbol{x}_j) - \sum_i \alpha_i y_i b + \sum_i \alpha_i \\
-                L &= \sum_i \alpha_i - \frac{1}{2} \sum_i \sum_j \alpha_i \alpha_j y_i y_j \boldsymbol{x}_i \cdot \boldsymbol{x}_j
+                L &= \frac{1}{2} (\sum_i \alpha_i y_i \boldsymbol{x}_i)^T (\sum_j \alpha_j y_j \boldsymbol{x}_j) - (\sum_i \alpha_i y_i \boldsymbol{x}_i)^T (\sum_j \alpha_j y_j \boldsymbol{x}_j) - \sum_i \alpha_i y_i b + \sum_i \alpha_i \\
+                L &= \sum_i \alpha_i - \frac{1}{2} \sum_i \sum_j \alpha_i \alpha_j y_i y_j \boldsymbol{x}_i^T \boldsymbol{x}_j
             \end{align*}
         \item Ziel: $ \max L$
         \item Entscheidungsfunktion:
             \begin{align*}
-                h(\boldsymbol{u}) = \sum_i \alpha_i y_i \boldsymbol{x}_i \cdot \boldsymbol{u} + b \begin{cases}
-                    \geq 0 & \Rightarrow y_u = +1 \\
-                    \leq 0 & \Rightarrow y_u = -1 \\
+                h(\boldsymbol{x}) = \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \begin{cases}
+                    \geq 0 & \Rightarrow y_x = +1 \\
+                    \leq 0 & \Rightarrow y_x = -1 \\
                 \end{cases}
             \end{align*}
     \end{itemize}
@@ -530,7 +529,7 @@
     \begin{itemize}
         \item Kanonische Hyperebene:
             \begin{align*}
-                \boldsymbol{w} \cdot \boldsymbol{x} + b = 0
+                \boldsymbol{w}^T \boldsymbol{x} + b = 0
             \end{align*}
         \item Gesucht: Parameter $\boldsymbol{w}$ und $b$
         \item Supportive values $\alpha$:
@@ -540,18 +539,25 @@
             \end{align*}
         \item Entscheidungsfunktion $H$:
             \begin{align*}
-                h(\boldsymbol{u}) = \sum_j \alpha_j y_j \boldsymbol{x}_j \cdot \boldsymbol{u} + b \begin{cases}
-                    \geq 0 & \Rightarrow y_u = +1 \\
-                    \leq 0 & \Rightarrow y_u = -1 \\
+                h(\boldsymbol{x}) = \sum_j \alpha_j y_j \boldsymbol{x}_j^T \boldsymbol{x} + b \begin{cases}
+                    \geq 0 & \Rightarrow y_x = +1 \\
+                    \leq 0 & \Rightarrow y_x = -1 \\
                 \end{cases}
             \end{align*}
         \item Supportvektoren
             \begin{align*}
-                & y_i (\sum_j \alpha_j y_j \boldsymbol{x}_j \cdot \boldsymbol{x}_i + b) = 1 \quad \forall \text{ s.v. } \boldsymbol{x}_i \in \boldsymbol{x} \\
+                & y_i (\sum_j \alpha_j y_j \boldsymbol{x}_j^T \boldsymbol{x}_i + b) = 1 \quad \forall \text{ s.v. } \boldsymbol{x}_i \in \boldsymbol{x} \\
                 & \alpha_i \begin{cases}
                     > 0 & \text{ wenn } x_i \text{ ein support vector ist} \\
                     = 0 & \text{ sonst} \\
                 \end{cases} \\
             \end{align*}
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Quellen}
+
+    \nocite{*}
+    \printbibliography
 \end{frame}
