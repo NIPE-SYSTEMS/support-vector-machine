@@ -2,7 +2,7 @@
 
 ## Presentation slides
 
-TBD
+[Slides](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/slides/svm.pdf)
 
 ## Presentation notebooks (code)
 
