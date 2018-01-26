@@ -1,14 +1,30 @@
-# Support Vector Machine
+# Machine Learning Talk: Support Vector Machine
+
+26.02.18 by Jonas Krug, Tim Schlottmann, Hendrik Sieck
 
 ## Presentation slides
 
-[Slides](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/slides/svm.pdf)
+[Presentation Slides for Linear SVM and SVM with Kernels](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/slides/svm.pdf)
 
 ## Presentation notebooks (code)
 
 1. [Implemented SVM with Gaussian kernel](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Support%20Vector%20Machine.ipynb)
 2. [MNIST handwriting example](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Handwriting.ipynb)
 3. [Error analysis](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Error%20Analysis.ipynb)
+
+### Run presentation notebooks
+
+1. Install [Docker](https://www.docker.com)
+2. Run `pull.sh`
+3. Run `start-notebook.sh`
+4. Locate a browser to the URL and execute the notebooks
+
+### Benchmarks
+
+* Intel 5200U @ 2.2 GHz needs 56 minutes for all notebooks executing in parallel
+* Intel Xeon E3-1240 v5 @ 3.5 GHz needs ca. 30-40 minutes
+
+The complete variable workspace of all notebooks require ca. 5-6 GB RAM.
 
 ## Handout/Summary
 
