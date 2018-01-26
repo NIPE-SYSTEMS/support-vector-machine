@@ -1,0 +1,170 @@
+\documentclass[8pt]{beamer}
+
+
+\usepackage{beamerthemeMunichHH}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{verbatim,fancyvrb}
+
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[babel, german=quotes]{csquotes}
+\usepackage{hyperref}
+\usepackage[style=alphabetic]{biblatex}
+
+\addbibresource{bibliography.bib}
+
+% ------------------------------------------------------------------------
+% font management
+% ------------------------------------------------------------------------
+
+\usepackage{euler}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\rmdefault}{\familydefault}
+
+\usepackage{mathrsfs} % for mathscr font
+
+% ------------------------------------------------------------------------
+% References Logistics
+% ------------------------------------------------------------------------
+
+\usepackage{lmodern}    
+\usepackage[labelformat=empty,font=scriptsize,skip=0pt,justification=justified,singlelinecheck=false]{caption}
+
+%remove the icon
+\setbeamertemplate{bibliography item}{}
+
+%remove line breaks
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+%\usepackage[backend=bibtex,style=alphabetic,firstinits=true,sorting=none]{biblatex}
+
+% google(beamer printbibliography icon does not appear)
+% https://tex.stackexchange.com/questions/124256/how-do-i-get-numbered-entries-in-a-beamer-bibliography
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+\bibliography{mainRefs}
+
+\makeatletter
+\def\blx@maxline{77}
+\makeatother
+
+% ------------------------------------------------------------------------
+\title{Support Vector Machines mit Kerneln}
+\author{Tim Schlottmann, Hendrik Sieck, Jonas Krug}
+\date{26.01.2018}
+% ------------------------------------------------------------------------
+ 
+\setbeamercolor{black30}{fg=black!30}
+
+%--------------------------------------------------------------------------
+% macros
+% ------------------------------------------------------------------------
+\def\cA{{\mathcal A}}
+\def\cB{{\mathcal B}}
+\def\cE{{\mathcal E}}
+\def\cG{{\mathcal G}}
+\def\cC{{\mathcal C}}
+\def\cM{{\mathcal M}}
+\def\cN{{\mathcal N}}
+\def\cH{{\mathcal H}}
+\def\cU{{\mathcal U}}
+\def\cX{{\mathcal X}}
+\def\cY{{\mathcal Y}}
+\def\cK{{\mathcal K}}
+\def\sD{{\mathsf D}}
+\def\fJ{{\mathfrak J}}
+\def\bU{{\mathbb U}}
+\def\bV{{\mathbb V}}
+\def\bR{{\mathbb R}}
+\def\bT{{\mathbb T}}
+\def\scA{{\mathscr A}}
+\def\scB{{\mathscr B}}
+\def\scC{{\mathscr C}}
+\def\scE{{\mathscr E}}
+\def\scH{{\mathscr H}}
+\def\scX{{\mathscr X}}
+
+% ===================================
+
+\newcommand{\pd}[2]{\frac{\partial#1}{\partial#2}}      %% partial deriv
+\newcommand{\pdd}[2]{\frac{\partial^2#1}{\partial#2^2}} %% partial deriv
+
+% ===================================
+
+\def\<#1,#2>{\langle#1,#2\rangle} %% inner product (Dirac not'n)
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{defi}{Definition}[section]
+\newtheorem{lemm}{Lemma}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{seti}{Setting}[section]
+\newtheorem{obje}{Objectives}[section]
+\newtheorem{frmk}{}[section]
+
+
+%--------------------------------------------------------------------------
+% Beamer logistics 
+% ------------------------------------------------------------------------
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[page number]{}
+\setbeamercovered{transparent}
+% the following is automatically updated after two compilations
+% \renewcommand{\inserttotalframenumber}{12} 
+
+% =============================================================
+% prepare the footnote that will appear in the whole document 
+\setbeamerfont{pa}{size=\footnotesize}
+\setbeamerfont{pb}{size=\tiny}
+\setbeamercolor{bblack40}{bg=black!40}
+\setbeamercolor{black40}{fg=black!50}
+
+
+\setbeamertemplate{footline}
+{
+\hskip7mm \begin{beamercolorbox}[wd=120mm]{white}
+{\usebeamerfont{pb}\usebeamercolor[fg]{black}{
+\hskip 110mm  \insertpagenumber\,/\,\inserttotalframenumber}}
+\begin{beamercolorbox}[sep=1.5pt,wd=115mm]{white}    \end{beamercolorbox}\par
+\end{beamercolorbox}
+}
+
+% =============================================================
+% prepare logos for initial page 
+\pgfdeclareimage[height=1.0cm]{uniHHLogo}{tuhhLogo}
+\pgfdeclareimage[height=1.0cm]{depmatLogo}{Mathe-Logo}
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+\newcommand{\MyLogoA}{%
+\begin{textblock}{14}(2.0,0.9)
+  \pgfuseimage{uniHHLogo}
+\end{textblock}
+}
+
+\newcommand{\MyLogoB}{%
+\begin{textblock}{14}(90.0,0.9)
+  \pgfuseimage{depmatLogo}
+\end{textblock}
+}
+
+
+
+\begin{document}
+
+  \frame{\titlepage\MyLogoA\MyLogoB}
+
+  \input{folien}
+  \input{folienKernel}
+
+\end{document}
+
