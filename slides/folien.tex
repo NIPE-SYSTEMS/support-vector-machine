@@ -254,7 +254,7 @@
     }\only<3> {
         \begin{itemize}
             \item Kanonische Hyperebene: $ H = \boldsymbol{w}^T \boldsymbol{x} + b = 0 $
-            \item Kanonische Hyperebene ermöglicht Klassifizierung:
+            \item Klassifizierung:
                 \begin{equation*}
                     h(x_i) = \begin{cases}
                         +1 & \text{ wenn } \boldsymbol{w}^T \boldsymbol{x}_i + b \geq 0 \\
@@ -481,19 +481,16 @@
     \begin{itemize}
         \item Langrange Multiplikatoren:
             \begin{align*}
-                L = \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 - \sum \alpha_i \left[ y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b) - 1 \right] \\
-            \end{align*}
-        \item Suche nach den Extremum
-            \begin{align*}
-                \frac{\partial L}{\partial \boldsymbol{w}} = \boldsymbol{w} - \sum \alpha_i y_i \boldsymbol{x}_i = 0 &\Rightarrow \boldsymbol{w} = \sum_i \alpha_i y_i \boldsymbol{x}_i \\
-                \frac{\partial L}{\partial b} = -\sum \alpha_i y_i = 0 &\Rightarrow \sum_i \alpha_i y_i = 0 \\
+                &L = \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 - \sum \alpha_i \left[ y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b) - 1 \right] \\
+                &\frac{\partial L}{\partial \boldsymbol{w}} = \boldsymbol{w} - \sum \alpha_i y_i \boldsymbol{x}_i = 0 &\Rightarrow \boldsymbol{w} = \sum_i \alpha_i y_i \boldsymbol{x}_i \\
+                &\frac{\partial L}{\partial b} = -\sum \alpha_i y_i = 0 &\Rightarrow \sum_i \alpha_i y_i = 0 \\
             \end{align*}
         \item $\boldsymbol{w}$ in $L$ eingesetzt:
             \begin{align*}
                 L &= \frac{1}{2} (\sum_i \alpha_i y_i \boldsymbol{x}_i)^T (\sum_j \alpha_j y_j \boldsymbol{x}_j) - (\sum_i \alpha_i y_i \boldsymbol{x}_i)^T (\sum_j \alpha_j y_j \boldsymbol{x}_j) - \sum_i \alpha_i y_i b + \sum_i \alpha_i \\
                 L &= \sum_i \alpha_i - \frac{1}{2} \sum_i \sum_j \alpha_i \alpha_j y_i y_j \boldsymbol{x}_i^T \boldsymbol{x}_j
             \end{align*}
-        \item Ziel: $ \max_{\boldsymbol{w}, b, \boldsymbol{\alpha}} L$
+        \item Ziel: $ \max_{\boldsymbol{\alpha}} L $
         \item Entscheidungsfunktion:
             \begin{align*}
                 h(\boldsymbol{x}) = \begin{cases}
