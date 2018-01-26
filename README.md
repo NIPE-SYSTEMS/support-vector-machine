@@ -18,4 +18,4 @@ TBD
 
 All code and all presentation slides are licensed with GPLv3, see [LICENSE](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/LICENSE) for more information.
 
-Credits: Latex beamer theme by Till Tantau (2007, GPL), modifications by Mijial Guillemard.
+Credits: Latex beamer theme by Till Tantau (2007, GPL), modifications by Mijail Guillemard.
