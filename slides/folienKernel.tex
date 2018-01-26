@@ -1,20 +1,20 @@
 \section{Einführung}
 	\begin{frame}
-		\frametitle{Einführung: Linear seperierbare Daten}
+		\frametitle{Einführung: Linear separierbare Daten}
 			\begin{figure}
 					\includegraphics[width=\textwidth]{img/linearsvm.png}
 			\end{figure}
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Einführung: Linear nicht seperierbare Daten 1}
+		\frametitle{Einführung: Linear nicht separierbare Daten 1}
 			\begin{figure}
 					\includegraphics[width=\textwidth]{img/nonlinearsvm.png}
 			\end{figure}
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Einführung: Linear nicht seperierbare Daten 2}
+		\frametitle{Einführung: Linear nicht separierbare Daten 2}
 			\begin{figure}
 					\includegraphics[width=\textwidth]{img/nonlinearsvmwbl.png}
 			\end{figure}
@@ -101,7 +101,7 @@
 
 \section{Mathematik}
 	\begin{frame}
-		\frametitle{Genauere Klärung von $\phi$}
+		\frametitle{Definition: $\phi$}
 			Abbildfunktion
 			\begin{align*}
 				\phi: \mathbb{R}^{n} & \to \mathbb{R}^{m} \\
@@ -111,7 +111,7 @@
 			Probleme:
 			\begin{itemize}
 				\item $m > n$ höherer Rechenaufwand \\
-					Ab einer bestimmten größe kann damit nicht mehr gerechnet werden
+					Ab einer bestimmten Größe kann damit nicht mehr gerechnet werden
 				\item Obergrenze für $m$
 				\item $\phi$ nur für Skalarprodukt benötigt
 			\end{itemize}
@@ -120,7 +120,7 @@
 	\begin{frame}
 		\frametitle{Beispiel Kernel}
 			\begin{equation*}
-				\phi(\boldsymbol{x}) = (1 \ \sqrt{2}x_{1} \ \sqrt{2}x_{2} \ \dots \ x_{1}^{2}x_{2}^{2} \ \dots \ \sqrt{2}x_{1}x_{2} \ \sqrt{2}x_{1}x_{3} \ \dots)
+				\phi(\boldsymbol{x}) = (1 \ \sqrt{2}x_{1} \ \sqrt{2}x_{2} \ \dots \ x_{1}^{2} \ x_{2}^{2} \ \dots \ \sqrt{2}x_{1}x_{2} \ \sqrt{2}x_{1}x_{3} \ \dots)
 			\end{equation*}
 			\pause
 			\begin{align*}
@@ -232,7 +232,17 @@
 	\begin{frame}
 		\frametitle{Verschiedene Kernel in der Praxis: Gauß}
 			\vspace{10pt}
-			$K(\boldsymbol{v}, \boldsymbol{w}) = \exp(-\frac{\lvert\lvert\boldsymbol{v} - \boldsymbol{w}\rvert\rvert^{2}}{2\sigma^{2}})$ \\\
+			$K(\boldsymbol{v}, \boldsymbol{w}) = \exp\left(-\frac{\lvert\lvert\boldsymbol{v} - \boldsymbol{w}\rvert\rvert^{2}}{2\sigma^{2}}\right)$ \\
+			
+			\begin{figure}
+				\includegraphics[width=.9\textwidth]{img/kernelGau.png}
+			\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Verschiedene Kernel in der Praxis: Gauß}
+			\vspace{10pt}
+			$K(\boldsymbol{v}, \boldsymbol{w}) = \exp\left(-\frac{\lvert\lvert\boldsymbol{v} - \boldsymbol{w}\rvert\rvert^{2}}{2\sigma^{2}}\right)$ \\\
 			
 			\begin{columns}
 				\begin{column}{.5\textwidth}
@@ -249,7 +259,7 @@
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Verschiedene Kernel in der Praxis: "Esotherisch"}
+		\frametitle{Verschiedene Kernel in der Praxis: Esotherisch}
 			$K: D \times D \rightarrow \mathbb{R}$ \\\
 			
 			Beispiel: String Kernel \\
@@ -262,15 +272,8 @@
 	\begin{frame}
 		\frametitle{Zusammenfassung}
 			\begin{itemize}
-				\item SVMs in ihrer Standartform haben Probleme nicht liear trennbare Datensätze zu klassifizieren
-				\item Mit $\phi(x)$ Daten in einen Raum abbilden wo dies möglich ist
-				\item Kernel nutzen um die daraus folgende Berechnung zu vereinfachen
+				\item SVMs in ihrer Standartform haben Probleme nicht linear trennbare Datensätze zu klassifizieren
+				\item Mit $\phi(x)$ Daten in einen Raum abbilden, wo dies möglich ist
+				\item Kernel nutzen, um die daraus folgende Berechnung zu vereinfachen
 			\end{itemize}
 	\end{frame}
-
-% \section{Quellen}
-	% \begin{frame}
-	% 	\frametitle{Quellen}
-	% 		{\footnotesize \printbibliography[title={Whole bibliography}]}
-	% Kernelmath: http://disi.unitn.it/~passerini/teaching/2013-2014/MachineLearning/slides/17_kernel_machines/handouts.pdf
-	% \end{frame}
