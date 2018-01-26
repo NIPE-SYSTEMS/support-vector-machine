@@ -38,16 +38,29 @@
     \vspace{3mm}
 
     \begin{itemize}
-        \item Support Vector Machines (deutsch: Stützvektor Maschine)
-        \item Binärer Klassifierierer
+        \item Support Vector Machine
+        \item Binärer Klassifizierer
     \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Folie 3: Lineare Klassifizierung
+%Folie 3: Inhalt
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Lineare Klassifizierung}
+    \frametitle{Inhalt}
+
+    \begin{itemize}
+        \item Grundlagen von SVM
+        \item Kernel-Trick
+        \item Praxis mit Python
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Folie 4: Problemstellung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Problemstellung}
 
     \only<1>{
         \begin{figure}[h]
@@ -57,101 +70,106 @@
                 \label{lin_klassif:fig_1}
             }
         \end{figure}
-    }\only<2>{
-        \begin{figure}[h]
-            \centering{
-                \includegraphics[width=0.5\textwidth]{PowerPoint/Folie3.png}
-                % \caption{Beispiel eines Training-Sets}
-                \label{definitionen:fig_2}
-            }
-        \end{figure}
-    }\only<3>{
-        \begin{figure}[h]
-            \centering{
-                \includegraphics[width=0.5\textwidth]{PowerPoint/Folie4.png}
-                % \caption{Beispiel eines Training-Sets}
-                \label{definitionen:fig_3}
-            }
-        \end{figure}
-    }\only<4>{
-        \begin{figure}[h]
-            \centering{
-                \includegraphics[width=0.5\textwidth]{PowerPoint/Folie5.png}
-                % \caption{Beispiel eines Training-Sets}
-                \label{definitionen:fig_4}
-            }
-        \end{figure}
-    }
 
-    \only<1>{
         \vspace{3mm}
-        
+
         \begin{itemize}
             \item Wie trenne ich die beiden Klassen voneinander?
         \end{itemize}
-    }
+    }\only<2-3>{
+        \begin{figure}[h]
+            \begin{minipage}{0.4\textwidth} 
+                \begin{figure}[h]
+                    \centering{
+                        \includegraphics[width=\textwidth]{PowerPoint/Folie3.png}
+                        % \caption{Beispiel eines Training-Sets}
+                        \label{definitionen:fig_2}
+                    }
+                \end{figure}
+            \end{minipage}
+            \hfill
+            \begin{minipage}{0.4\textwidth}
+                \begin{figure}[h]
+                    \centering{
+                        \includegraphics[width=\textwidth]{PowerPoint/Folie4.png}
+                        % \caption{Beispiel eines Training-Sets}
+                        \label{definitionen:fig_3}
+                    }
+                \end{figure}
+            \end{minipage}
+        \end{figure}
 
-    % \only<2->{
-    %     \vspace{3mm}
-
-    %     \begin{itemize}
-    %         \item Hyperebene: $ \boldsymbol{w}^T \boldsymbol{x} + b = 0 $
-    %     \end{itemize}
-    % }
-
-    \only<2>{
         \vspace{2mm}
 
         \begin{itemize}
-            \item Wie lege ich die Hyperebene am besten?
-        \end{itemize}
-    }
+            \item<2-> Wie lege ich die Hyperebene am besten?
 
-    \only<3-4>{
-        \vspace{2mm}
-
-        \begin{itemize}
-            \item Anderer Name von Support Vector Machines: Large Margin Classifier
+            \item<3-> Anderer Name von Support Vector Machines: Large Margin Classifier
         \end{itemize}
     }
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Folie 4: Definitionen
+%Folie 5: Support vectors
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Definitionen}
+    \frametitle{Support vectors (s.v.)}
 
     \begin{figure}[h]
         \begin{minipage}{0.4\textwidth} 
             \begin{figure}[h]
                 \centering{
-                    \includegraphics[width=\textwidth]{PowerPoint/Folie2.png}
+                    \includegraphics[width=\textwidth]{PowerPoint/Folie14.png}
                     % \caption{Beispiel eines Training-Sets}
-                    \label{definitionen:fig_1}
+                    \label{sv:fig_1}
                 }
             \end{figure}
         \end{minipage}
         \hfill
         \begin{minipage}{0.4\textwidth}
-            \begin{itemize}
-                \item<2-> $m = 5$
-                \item<2-> Trainingsset:
-                    \begin{align*}
-                        S &\in (\boldsymbol{x} \times \boldsymbol{y})^m \\
-                        &=  \left( \begin{matrix}
-                            1 & 0.5 & +1 \\
-                            3.5 & 1 & -1 \\
-                            & \vdots & \\
-                        \end{matrix} \right) \\
-                    \end{align*}
-            \end{itemize} 
+            \begin{figure}[h]
+                \centering{
+                    \includegraphics[width=\textwidth]{PowerPoint/Folie16.png}
+                    % \caption{Beispiel eines Training-Sets}
+                    \label{sv:fig_3}
+                }
+            \end{figure}
         \end{minipage}
     \end{figure}
-    
+    \begin{figure}[h]
+        \begin{minipage}{0.4\textwidth} 
+            \begin{figure}[h]
+                \centering{
+                    \includegraphics[width=\textwidth]{PowerPoint/Folie15.png}
+                    % \caption{Beispiel eines Training-Sets}
+                    \label{sv:fig_2}
+                }
+            \end{figure}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.4\textwidth}
+            \begin{figure}[h]
+                \centering{
+                    \includegraphics[width=\textwidth]{PowerPoint/Folie17.png}
+                    % \caption{Beispiel eines Training-Sets}
+                    \label{sv:fig_4}
+                }
+            \end{figure}
+        \end{minipage}
+    \end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Folie 6: Definitionen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Definitionen}
+
     \begin{itemize}
-        \item Anzahl an Trainingspunkten $ m \in \mathbb{R} $
+        \item $ m \in \mathbb{R} $ Datenpunkte
         \item Input $ \boldsymbol{x} \in \mathbb{R}^N $
+        % \item Input $ \boldsymbol{x} := \{ \boldsymbol{x}_1, \dots, \boldsymbol{x}_m \} \text{, } \boldsymbol{x} \in \mathbb{R}^N $
         \item Output $ y \in \{ -1, +1 \} $
         \item Trainingsset $S \in (\mathbb{R}^N \times \{ -1, +1 \})^m $
     \end{itemize}
@@ -161,17 +179,45 @@
     \begin{itemize}
         \item Hypothese
             \begin{align*}
-                h: \boldsymbol{x} &\to \boldsymbol{y} \\
-                \boldsymbol{x}_i &\mapsto \{ +1, -1 \} \\
+                h: \mathbb{R}^N &\to \{ +1, -1 \} \\
+                \boldsymbol{x} &\mapsto y \\
             \end{align*}
     \end{itemize}
+
+    \vspace{3mm}
+
+    \begin{figure}[h]
+        \begin{minipage}{0.4\textwidth} 
+            \begin{figure}[h]
+                \centering{
+                    \includegraphics[width=\textwidth]{PowerPoint/Folie9.png}
+                    % \caption{Beispiel eines Training-Sets}
+                    \label{definitionen:fig_1}
+                }
+            \end{figure}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.4\textwidth}
+            \begin{itemize}
+                \item<2-> $m = 5$
+                \item<2-> Trainingsset $S$:
+                    \begin{align*}
+                        S = \left( \begin{matrix}
+                            1 & 2.5 & +1 \\
+                            5 & 2 & -1 \\
+                            & \vdots & \\
+                        \end{matrix} \right) \\
+                    \end{align*}
+            \end{itemize} 
+        \end{minipage}
+    \end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Folie 5: Large Margin Classifier
+%Folie 7: Verlauf der Hyperbene
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Large Margin Classifier}
+    \frametitle{Verlauf der Hyperbene}
 
     \begin{figure}[h]
         \centering{
@@ -194,15 +240,15 @@
             \item Hyperebene: $ H' = \boldsymbol{w}'^T \boldsymbol{x} + b' = 0 $
             \item Gutter constraint (GC):
                 \begin{align*}
-                    & \boldsymbol{w}^T \boldsymbol{x}_i + b = y_i, \quad \forall \text{ support vectors } \in \boldsymbol{x} \\
-                    & y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) = 1 \quad \forall \text{ support vectors } \in \boldsymbol{x} \\
+                    H_+ := & \boldsymbol{w}^T \boldsymbol{x}_p + b = +1, \quad \forall \text{ s.v., die auf } H_+ \text{ liegen} \\
+                    H_- := & \boldsymbol{w}^T \boldsymbol{x}_n + b = -1, \quad \forall \text{ s.v., die auf } H_- \text{ liegen} \\
+                    & y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) = 1 \quad \forall \text{ s.v. } \\
                 \end{align*}
-            \item Um GC zu erfüllen: $ \boldsymbol{w} $ und $b$ werden um $ c \in \mathbb{R} $ skaliert:
+            \item Um GC zu erfüllen: $ \boldsymbol{w} $ und $b$ werden um $ v \in \mathbb{R} $ skaliert:
                 \begin{align*}
-                    & H = c ( \boldsymbol{w}^T \boldsymbol{x} + b ) = 0 \\
-                    & \boldsymbol{w} = c^T \boldsymbol{w}' \\
-                    & b = c^T b' \\
-                \end{align*}
+                    & \boldsymbol{w} = v^T \boldsymbol{w}' & b = v^T b' \\
+                    & H = v ( \boldsymbol{w}^T \boldsymbol{x} + b ) = 0
+                \end{align*} \\
             \item $H$ heißt auch kanonische Hyperebene
         \end{itemize}
     }\only<3> {
@@ -220,7 +266,7 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Folie 6: Beispiel I
+% Folie 8: Beispiel I
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \frametitle{Beispiel I}
@@ -273,7 +319,7 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Folie 7: Beispiel II
+% Folie 9: Beispiel II
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \frametitle{Beispiel II}
@@ -338,7 +384,7 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Folie 8: Beispiel III
+% Folie 10: Beispiel III
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \frametitle{Beispiel III}
@@ -392,57 +438,48 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Folie 9: Minimierungsproblem
+% Folie 11: Minimierungsproblem
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \frametitle{Minimierungsproblem}
 
     \begin{figure}[h]
-        \begin{minipage}{0.4\textwidth} 
-            \only<1->{
-                \begin{figure}[h]
-                    \centering{
-                        \includegraphics[width=\textwidth]{PowerPoint/Folie8.png}
-                        % \caption{Beispiel eines Training-Sets}
-                        \label{Min_Prob:fig_1}
-                    }
-                \end{figure}
-            }
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.4\textwidth}
-            \begin{itemize}
-                \item Projektionseigenschaft des Skalarprodukts
-                \item Breite des margin $\rho$:
-                    \begin{equation*}
-                        \rho = (\boldsymbol{x_p} - \boldsymbol{x_n})^T \frac{\boldsymbol{w}}{\Vert \boldsymbol{w} \Vert}
-                    \end{equation*}
-                \item Gutter constraint: 
-                    \begin{equation*}
-                        y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) = 1 \quad \forall \text{ s.v. } \in \boldsymbol{x}
-                    \end{equation*}
-            \end{itemize} 
-        \end{minipage}
+        \centering{
+            \includegraphics[width=0.5\textwidth]{PowerPoint/Folie8.png}
+            % \caption{Beispiel eines Training-Sets}
+            \label{Min_Prob:fig_1}
+        }
+    \end{figure}
 
+    \only<1>{
         \begin{itemize}
+            \item Projektionseigenschaft des Skalarprodukts
+            \item Breite des margin $\rho$:
+                \begin{equation*}
+                    \rho = (\boldsymbol{x}_p - \boldsymbol{x}_n)^T \frac{\boldsymbol{w}}{\Vert \boldsymbol{w} \Vert} \Leftrightarrow \rho = (\boldsymbol{x}_p^T \boldsymbol{w} - \boldsymbol{x}_n^T \boldsymbol{w}) \frac{1}{\Vert \boldsymbol{w} \Vert}
+                \end{equation*}
+            \item Gutter constraint: 
+                \begin{align*}
+                    y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) = 1 \quad \forall \text{ s.v. } \in \boldsymbol{x}
+                \end{align*}
             \item $ \rho = \frac{2}{\Vert \boldsymbol{w} \Vert} $
             \item Ziel einer SVM: Maximiere den margin
                 \begin{align*}
-                    & \max \frac{2}{\Vert \boldsymbol{w} \Vert} \Leftrightarrow \min \Vert \boldsymbol{w} \Vert \Leftrightarrow \min \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 \\
+                    & \max_{\boldsymbol{w}, b} \frac{2}{\Vert \boldsymbol{w} \Vert} \Leftrightarrow \min_{\boldsymbol{w}, b} \Vert \boldsymbol{w} \Vert \Leftrightarrow \min_{\boldsymbol{w}, b} \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 \\
                     & \text{u.d.N. } y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) - 1 \geq 0 \\
                 \end{align*}
-        \end{itemize}
-    \end{figure}
+        \end{itemize} 
+    }
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Folie 10: Lagrange multipliers
+% Folie 12: Lagrange Multiplikatoren
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Lagrange multipliers}
+    \frametitle{Lagrange Multiplikatoren}
 
     \begin{itemize}
-        \item Langrange multipliers:
+        \item Langrange Multiplikatoren:
             \begin{align*}
                 L = \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 - \sum \alpha_i \left[ y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b) - 1 \right] \\
             \end{align*}
@@ -456,34 +493,32 @@
                 L &= \frac{1}{2} (\sum_i \alpha_i y_i \boldsymbol{x}_i)^T (\sum_j \alpha_j y_j \boldsymbol{x}_j) - (\sum_i \alpha_i y_i \boldsymbol{x}_i)^T (\sum_j \alpha_j y_j \boldsymbol{x}_j) - \sum_i \alpha_i y_i b + \sum_i \alpha_i \\
                 L &= \sum_i \alpha_i - \frac{1}{2} \sum_i \sum_j \alpha_i \alpha_j y_i y_j \boldsymbol{x}_i^T \boldsymbol{x}_j
             \end{align*}
-        \item Ziel: $ \max L$
+        \item Ziel: $ \max_{\boldsymbol{w}, b, \boldsymbol{\alpha}} L$
         \item Entscheidungsfunktion:
             \begin{align*}
-                h(\boldsymbol{x}) = \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \begin{cases}
-                    \geq 0 & \Rightarrow y_x = +1 \\
-                    \leq 0 & \Rightarrow y_x = -1 \\
+                h(\boldsymbol{x}) = \begin{cases}
+                    +1 & \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \geq 0 \\
+                    -1 & \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \leq 0 \\
                 \end{cases}
             \end{align*}
     \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Folie 11: supportiveness values
+% Folie 13: Unterstützungsvariablen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Supportiveness values $\alpha$}
+    \frametitle{Unterstützungsvariablen $\alpha$}
 
     \begin{itemize}
         \item Eigenschaften:
             \begin{align*}
-                & \boldsymbol{\alpha} \geq 0 \\
-                & \alpha_i \begin{cases}
+                & \boldsymbol{\alpha} \geq 0 & \alpha_i \begin{cases}
                     > 0 & \text{ wenn } x_i \text{ ein support vector ist} \\
                     = 0 & \text{ sonst} \\
                 \end{cases} \\
+                & \sum\limits_{\substack{ \text{pos. s.v.} \\ p}} \alpha_p  = \sum\limits_{\substack{ \text{neg. s.v.} \\ n}} \alpha_n \\
             \end{align*}
-        \item $ \sum\limits_{\substack{ \text{s.v.} \\ i}} \alpha_i y_i  = 0 \Leftrightarrow \sum\limits_{\substack{ \text{pos. s.v.} \\ p}} \alpha_p  = \sum\limits_{\substack{ \text{neg. s.v.} \\ n}} \alpha_n $
-        \item $ \sum\limits_i \alpha_i y_i \boldsymbol{x}_i = \boldsymbol{w} \Leftrightarrow \boldsymbol{w} = \sum\limits_p \alpha_p \boldsymbol{x}_p - \sum\limits_n \alpha_n \boldsymbol{x}_n $
     \end{itemize}
 
     \vspace{3mm}
@@ -521,7 +556,44 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Folie 12: Zusammenfassung
+% Folie 14: Ausgleich eines fehlerhaften Trainigssets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Ausgleich eines fehlerhaften Trainigssets}
+
+    \begin{figure}[h]
+        \begin{minipage}{0.4\textwidth} 
+            \begin{figure}[h]
+                \centering{
+                    \includegraphics[width=\textwidth]{PowerPoint/Folie18.png}
+                    % \caption{Beispiel eines Training-Sets}
+                    \label{Schlupf:fig_1}
+                }
+            \end{figure}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.4\textwidth}
+            \begin{itemize}
+                \item Schlupfvariable $\xi$ zum Ausgleich falscher Messwerte
+            \end{itemize}
+        \end{minipage}
+    \end{figure}
+
+    \begin{itemize}
+        \item GC:
+            \begin{align*}
+                & y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) \geq 1 - \xi_i \quad \forall \boldsymbol{x}_i \in S & \xi_i \geq 0\\
+            \end{align*}
+        \item Minimierungsproblem:
+            \begin{align*}
+                &\min_{\boldsymbol{w}, b, \boldsymbol{\xi}} \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 + C \sum_i \xi_i \\
+                &\text{u.d.N. } y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) \geq 1 - \xi_i \land \xi_i \geq 0 \\
+            \end{align*}
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Folie 15: Zusammenfassung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \frametitle{Zusammenfassung}
@@ -532,32 +604,29 @@
                 \boldsymbol{w}^T \boldsymbol{x} + b = 0
             \end{align*}
         \item Gesucht: Parameter $\boldsymbol{w}$ und $b$
-        \item Supportive values $\alpha$:
+        \item Langange Multiplikatoren:
             \begin{align*}
-                \boldsymbol{w} = \sum_i \alpha_i y_i \boldsymbol{x}_i \\
-                \sum_i \alpha_i y_i = 0 \\
+                & \max_{\boldsymbol{w}, b, \boldsymbol{\alpha}} L = \sum_i \alpha_i - \frac{1}{2} \sum_i \sum_j \alpha_i \alpha_j y_i y_j \boldsymbol{x}_i^T \boldsymbol{x}_j \\
+                & \boldsymbol{w} = \sum_i \alpha_i y_i \boldsymbol{x}_i \\
+                & \sum_i \alpha_i y_i = 0 \\
             \end{align*}
-        \item Entscheidungsfunktion $H$:
+        \item Entscheidungsfunktion $h$:
             \begin{align*}
-                h(\boldsymbol{x}) = \sum_j \alpha_j y_j \boldsymbol{x}_j^T \boldsymbol{x} + b \begin{cases}
-                    \geq 0 & \Rightarrow y_x = +1 \\
-                    \leq 0 & \Rightarrow y_x = -1 \\
+                h(\boldsymbol{x}) = \begin{cases}
+                    +1 & \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \geq 0 \\
+                    -1 & \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \leq 0 \\
                 \end{cases}
-            \end{align*}
-        \item Supportvektoren
-            \begin{align*}
-                & y_i (\sum_j \alpha_j y_j \boldsymbol{x}_j^T \boldsymbol{x}_i + b) = 1 \quad \forall \text{ s.v. } \boldsymbol{x}_i \in \boldsymbol{x} \\
-                & \alpha_i \begin{cases}
-                    > 0 & \text{ wenn } x_i \text{ ein support vector ist} \\
-                    = 0 & \text{ sonst} \\
-                \end{cases} \\
             \end{align*}
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Quellen}
 
-    \nocite{*}
-    \printbibliography
-\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Quellen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}
+%     \frametitle{Quellen}
+
+%     \nocite{*}
+%     \printbibliography
+% \end{frame}
