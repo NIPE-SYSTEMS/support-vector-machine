@@ -170,8 +170,8 @@
 			\begin{align*}
 				\boldsymbol{z}^{T} \mathcal{K} \boldsymbol{z} &= \sum_{i} \sum_{j} \boldsymbol{z}_{i} \mathcal{K}_{i,j} \boldsymbol{z}_{j} \\
 															  &= \sum_{i} \sum_{j} \boldsymbol{z}_{i} \phi(\boldsymbol{x}^{(i)})^{T} \phi(\boldsymbol{x}^{(j)}) \boldsymbol{z}_{j} \\
-															  &= \sum_{i} \sum_{j} \boldsymbol{z}_{i} \sum_{k} \phi_{k}(\boldsymbol{x}^{(i)})^{T} \phi_{k}(\boldsymbol{x}^{(j)}) \boldsymbol{z}_{j} \\
-															  &= \sum_{k} \sum_{i} \sum_{j} \boldsymbol{z}_{i} \phi_{k}(\boldsymbol{x}^{(i)})^{T} \phi_{k}(\boldsymbol{x}^{(j)}) \boldsymbol{z}_{j} \\
+															  &= \sum_{i} \sum_{j} \boldsymbol{z}_{i} \sum_{k} \phi_{k}(\boldsymbol{x}^{(i)}) \phi_{k}(\boldsymbol{x}^{(j)}) \boldsymbol{z}_{j} \\
+															  &= \sum_{k} \sum_{i} \sum_{j} \boldsymbol{z}_{i} \phi_{k}(\boldsymbol{x}^{(i)}) \phi_{k}(\boldsymbol{x}^{(j)}) \boldsymbol{z}_{j} \\
 															  &= \sum_{k} \left( \sum_{i} \boldsymbol{z}_{i} \phi_{k}(\boldsymbol{x}^{(i)}) \right)^{2} \\
 															  &\ge 0 \\
 			\end{align*}
