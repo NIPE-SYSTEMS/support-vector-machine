@@ -40,23 +40,24 @@
     % \begin{multicols}{2}
 
         \section{Grundlagen}
-        Support Vector Maschinen sind ein binärer Klassifizierer. Datenmengen werden also in zwei Klassen eingeteilt. Zur Unterteilung der Klassen wird eine Hyperebene benutzt. Wie die Unterteilung stattfindet soll in diesem Abschnitt erklärt werden.
+            Support Vector Maschinen sind ein binärer Klassifizierer. Datenmengen werden also in zwei Klassen eingeteilt. Zur Unterteilung der Klassen wird eine Hyperebene benutzt. Wie die Unterteilung stattfindet soll in diesem Abschnitt erklärt werden.
 
-            \subsection{Definitionen}
-                Folgende Definitionen bilden die Grundlage für SVMs:
+            % \subsection{Definitionen}
+            Folgende Definitionen bilden die Grundlage für SVMs:
 
-                \begin{itemize}
-                    \item Anzahl an Datenpunkten: $ m \in \mathbb{R} $
-                    \item Input: $ \boldsymbol{x} \in \mathbb{R}^N $
-                    % \item Input $ \boldsymbol{x} := \{ \boldsymbol{x}_1, \dots, \boldsymbol{x}_m \} \text{, } \boldsymbol{x} \in \mathbb{R}^N $
-                    \item Output: $ y \in \{ -1, +1 \} $
-                    \item Trainingsset: $S \in (\mathbb{R}^N \times \{ -1, +1 \})^m $
-                \end{itemize}
+            \begin{itemize}
+                \item Anzahl an Datenpunkten: $ m \in \mathbb{R} $
+                \item Input: $ \boldsymbol{x} \in \mathbb{R}^N $
+                % \item Input $ \boldsymbol{x} := \{ \boldsymbol{x}_1, \dots, \boldsymbol{x}_m \} \text{, } \boldsymbol{x} \in \mathbb{R}^N $
+                \item Output: $ y \in \{ -1, +1 \} $
+                \item Trainingsset: $S \in (\mathbb{R}^N \times \{ -1, +1 \})^m $
+            \end{itemize}
 
-                Ziel ist es, eine Hypothese zu finden, die einen Input $\boldsymbol{x}$ auf eine der beiden Klassen $y$ abbildet: \begin{align*}
-                    h: \mathbb{R}^N &\to \{ +1, -1 \} \\
-                    \boldsymbol{x} &\mapsto y
-                \end{align*}
+            Ziel ist es, eine Hypothese zu finden, die einen Input $\boldsymbol{x}$ auf eine der beiden Klassen $y$ abbildet: \begin{align*}
+                h: \mathbb{R}^N &\to \{ +1, -1 \} \\
+                \boldsymbol{x} &\mapsto y
+            \end{align*}
+
             \subsection{Hyperebene}
                 Betrachten wir ein Trainingsset $S$ mit eingezeichneter Hyperebene $H$ wie in Abbildung \ref{fig:hyperplanes}. Es fällt auf, dass ein Spalt (engl. margin) entsteht, dessen Grenzen sich durch zwei weitere Hilfsebenen $H_+$ und $H_-$ darstellen lassen. $H_+$ und $H_-$ sind hierbei parallel zu $H$. In Abbildung \ref{fig:hyperplanes} ist $H_+$ die Begrenzung zur $+1$-Klasse und $H_-$ die Begrenzung zur $-1$-Klasse. Die Vektoren, durch die die Hilfsebenen verlaufen, heißen Supportvektoren und sind in der Abbildung schwarz umrandet.
                 \begin{figure}[H]
