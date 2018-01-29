@@ -12,7 +12,7 @@
 2. [MNIST handwriting example (iPYNB)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Handwriting.ipynb)
 3. [Error analysis (iPYNB)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Error%20Analysis.ipynb)
 
-[Presentation notebooks notes (PDF)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/presentation-notes.pdf)
+[Presentation notebook notes (PDF)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/presentation-notes.pdf)
 
 ### Run presentation notebooks
 
@@ -37,3 +37,5 @@ The complete variable workspace of all notebooks require ca. 5-6 GB RAM.
 All code and all presentation slides are licensed with GPLv3, see [LICENSE](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/LICENSE) for more information.
 
 Credits: Latex beamer theme by Till Tantau (2007, GPL), modifications by Mijail Guillemard.
+
+![](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/slides/tuhhLogo.png)
