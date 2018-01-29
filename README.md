@@ -12,7 +12,7 @@
 2. [MNIST handwriting example (iPYNB)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Handwriting.ipynb)
 3. [Error analysis (iPYNB)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Error%20Analysis.ipynb)
 
-([Presentation notebooks notes (PDF)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/text.pdf))
+[Presentation notebooks notes (PDF)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/presentation-notes.pdf)
 
 ### Run presentation notebooks
 
