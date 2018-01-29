@@ -4,13 +4,15 @@
 
 ## Presentation slides
 
-[Presentation Slides for Linear SVM and SVM with Kernels](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/slides/svm.pdf)
+[Presentation Slides for Linear SVM and SVM with Kernels (PDF)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/slides/svm.pdf)
 
 ## Presentation notebooks (code)
 
-1. [Implemented SVM with Gaussian kernel](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Support%20Vector%20Machine.ipynb)
-2. [MNIST handwriting example](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Handwriting.ipynb)
-3. [Error analysis](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Error%20Analysis.ipynb)
+1. [Implemented SVM with Gaussian kernel (iPYNB)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Support%20Vector%20Machine.ipynb)
+2. [MNIST handwriting example (iPYNB)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Handwriting.ipynb)
+3. [Error analysis (iPYNB)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/Error%20Analysis.ipynb)
+
+([Presentation notebooks notes (PDF)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/text.pdf))
 
 ### Run presentation notebooks
 
@@ -28,7 +30,7 @@ The complete variable workspace of all notebooks require ca. 5-6 GB RAM.
 
 ## Handout/Summary
 
-*will be added soon*
+[Handout/Summary (PDF)](https://github.com/NIPE-SYSTEMS/support-vector-machine/blob/master/submission/submission.pdf)
 
 ## License
 
