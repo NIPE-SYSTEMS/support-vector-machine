@@ -1,5 +1,5 @@
 \documentclass[10pt,a4paper]{scrartcl}
-% \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 %Language settings
 \usepackage[utf8]{inputenc}
@@ -19,6 +19,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{multicol}
 
 %Biblatex
 \usepackage{hyperref}
@@ -34,21 +35,52 @@
 
     \maketitle
 
+    \begin{multicols}{2}
+        
     \section{Abstract}
 
-    \section{Motivation -- Tim}
+    \section{Motivation}
 
-    \section{Grundlagen -- Tim}
-        Support Vector Maschinen sind ein binärer Klassifizierer. Datenmengen werden also in zwei Klassen eingeteilt. Zur Unterteilung wird hierfür eine Hyperebene benutzt.
-        
+    \section{Support vector machines -- Grundlagen}
+    Support Vector Maschinen sind ein binärer Klassifizierer. Datenmengen werden also in zwei Klassen eingeteilt. Zur Unterteilung der Klassen wird eine Hyperebene benutzt. Wie die Unterteilung stattfindet soll in diesem Abschnitt erklärt werden.
+
+        \subsection{Definitionen}
+            Folgende Definitionen bilden die Grundlage für SVMs:
+
+            \begin{itemize}
+                \item Anzahl an Datenpunkten: $ m \in \mathbb{R} $
+                \item Input: $ \boldsymbol{x} \in \mathbb{R}^N $
+                % \item Input $ \boldsymbol{x} := \{ \boldsymbol{x}_1, \dots, \boldsymbol{x}_m \} \text{, } \boldsymbol{x} \in \mathbb{R}^N $
+                \item Output: $ y \in \{ -1, +1 \} $
+                \item Trainingsset: $S \in (\mathbb{R}^N \times \{ -1, +1 \})^m $
+            \end{itemize}
+
+            Ziel ist es, eine Hypothese zu finden, die einen Input $\boldsymbol{x}$ auf eine der beiden Klassen $y$ abbildet: \begin{align*}
+                h: \mathbb{R}^N &\to \{ +1, -1 \} \\
+                \boldsymbol{x} &\mapsto y \\
+            \end{align*}
         \subsection{Hyperebene}
+            Die Definition einer solchen Entscheidungsfunktion gelingt uns über die Hyperbenengleichung $H = \boldsymbol{w}^T \boldsymbol{x} + b = 0$. 
+            Hierbei werden die Parameter $\boldsymbol{w}$ und $b$ so gewählt, dass für die Supportvektoren gilt: $y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) = 1$
+            So lässt sich die Hypothese wie folgt definieren:
+            \begin{equation*}
+                h(\boldsymbol{x}_i) = \begin{cases}
+                    +1 & \text{ wenn } \boldsymbol{w}^T \boldsymbol{x}_i + b \geq 0 \\
+                    -1 & \text{ wenn } \boldsymbol{w}^T \boldsymbol{x}_i + b \leq 0 \\
+                \end{cases}
+            \end{equation*}
 
-        \subsection{Langrange Multiplikatoren}
-
+        \subsection{Minimierungsproblem}
+            Die algorithmische Bestimmung der Parameter $\boldsymbol{w}$ und $b$ erfolgt über ein Minimierungsproblem. Die Spalte zwischen den Hilfsebenen $H_+$ und $H_-$ soll maximiert werden. Über die Projektionseigenschaft des Skalarproduktes lässt sich die Breite der Spalte über den Ausdruck $\frac{2}{\Vert \boldsymbol{w} \Vert}$ bestimmen. Die Breite der Spalte soll nun maximiert werden, was zu folgendem Minimierungsproblem führt:
+            \begin{align*}
+                & \max_{\boldsymbol{w}, b} \frac{2}{\Vert \boldsymbol{w} \Vert} \Leftrightarrow \min_{\boldsymbol{w}, b} \Vert \boldsymbol{w} \Vert \Leftrightarrow \min_{\boldsymbol{w}, b} \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 \\
+                & \text{u.d.N. } y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) - 1 \geq 0 \\
+            \end{align*}
+            Durch die Verwendung von Lagrange Multiplikatoren lässt sich eine 
     \section{Kernel Trick -- Jonas}
 
     \section{Praktische Umsetzung -- Hendrik}
 
 
-
+    \end{multicols}
 \end{document}
