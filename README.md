@@ -1,6 +1,6 @@
 # Machine Learning Talk: Support Vector Machine
 
-26.02.18 by Jonas Krug, Tim Schlottmann, Hendrik Sieck
+26.01.18 by Jonas Krug, Tim Schlottmann, Hendrik Sieck
 
 ## Presentation slides
 
