@@ -92,8 +92,81 @@
                         -1 & \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \leq 0
                     \end{cases}
                 \end{align*}
+
         \section{Kernel Trick}
-            % TODO: Jonas part
+            \subsection{Abbildfunktion}
+                Mit der gezeigten Definition von SVMs lassen sich linear seperierbare Daten gut trennen.
+                Es ist jedoch nicht möglich Daten mit komplexeren anordnungen mit hoher Wahrscheinlichkeit richtig zu klassifizieren. \\
+                
+                Mit Hilfe einer Abbildfunktion $\phi(\vec{x})$ lässt sich diese einschrenkung umgehen. Hierzu transformieren wir den Eingabevector $\vec{x}$ in einen neun Raum in dem eine lineare Trennung möglich ist. \\
+                
+                \begin{align*}
+                    \phi: \mathbb{R}^{n} & \to \mathbb{R}^{m} \\
+                    \boldsymbol{x} & \mapsto \boldsymbol{f}
+                \end{align*}
+                
+                Um die transformierten Vektoren für die SVM zu nutzen ersetzen wir das Skalarprodukt in Minimierungs- und Hypothesenfunktion durch durch ein Skalarprodukt der transformierten Vektoren. \\
+                
+            \subsection{Kernel}
+                Wenn die Dimension der transformierten Vektoren größer ist als die der Ursprungsvektoren erhöht dies den Rechenaufwand.
+                Zusätzlich wird $\phi(\vec{x})$ nur für das Skalarprodukt genutzt. \\
+                
+                Wir definieren daher einen so genannten Kernel, welcher das gleiche ergebnis wie das Skalarprodukt der transformierten Vektoren aufweist, aber einfacher zu berechnen ist.
+                
+                \begin{align*}
+                    K&(\boldsymbol{v}, \boldsymbol{w}) = \phi(\boldsymbol{v})^{T} \phi(\boldsymbol{w})\\
+                    K&: \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}
+                \end{align*}
+                
+            \subsection{Verschiedene kernel}
+                In der Praxis wird der lineare, der polynomielle und der Gauß'sche Kernel am meisten genutzt.
+                \subsubsection{Linear}
+                    Der Lineare Kernel ist equivalent zu einer SVM ohne Kernel. \\
+                    Er ist in der Lage linear trennbare daten zu klassifizieren \ref{ker:lin}. \\
+                    $K(\boldsymbol{v}, \boldsymbol{w}) = \boldsymbol{v}^{\, T} \boldsymbol{w}$
+                
+                \subsubsection{Polynomiell}
+                Der polynomielle Kernel korespondiert zu einem $\phi$ welches die Daten auf einer polynomiellen Fläche verteilt.
+                Er ermöglicht die Klassifizierung von Daten welche von Kruven getrennt weden können \ref{ker:pol}. \\
+                $K(\boldsymbol{v}, \boldsymbol{w}) = (\boldsymbol{v}^{\, T} \boldsymbol{w} + c)^{d}$
+                
+                \subsubsection{Gauß}
+                Der Gauß'sche Kernel nutz die Geometrische distanz zu anderen Datenpunkten zur Klassifizierung.
+                Um den maximalen Abstand der zu vergleichenden Punkte festzulegen kann der Parameter $\phi$ angepasst werden \ref{ker:sig}. \\
+                Er ermöglicht die daten in verschiedenen Kluster zu trennen \ref{ker:gau}. \\
+                $K(\boldsymbol{v}, \boldsymbol{w}) = \exp(-\frac{\lvert\lvert\boldsymbol{v} - \boldsymbol{w}\rvert\rvert^{2}}{2\sigma^{2}})$ \\\
+                
+                \begin{figure}[ht] 
+                    \label{kernels} 
+                    \begin{minipage}[b]{0.5\linewidth}
+                        \centering
+                        \includegraphics[width=.8\textwidth]{img_kernel/kernelLin.png}
+                        \caption{SVM mit linearem Kernel} 
+                        \vspace{4ex}
+                        \label{ker:lin}
+                    \end{minipage}%%
+                    \begin{minipage}[b]{0.5\linewidth}
+                        \centering
+                        \includegraphics[width=.8\textwidth]{img_kernel/kernelPol.png}
+                        \caption{SVM mit Polynomiellen Kernel} 
+                        \vspace{4ex}
+                        \label{ker:pol}
+                    \end{minipage} 
+                    \begin{minipage}[b]{0.5\linewidth}
+                        \centering
+                        \includegraphics[width=.8\textwidth]{img_kernel/kernelGau.png}
+                        \caption{SVM mit Gauß'schem Kernel} 
+                        \vspace{4ex}
+                        \label{ker:gau}
+                    \end{minipage}%% 
+                    \begin{minipage}[b]{0.5\linewidth}
+                        \centering
+                        \includegraphics[width=.8\textwidth]{img_kernel/sigmaGau.png}
+                        \caption{Verlauf des Gauß'schen Kernels}
+                        \vspace{4ex}
+                        \label{ker:sig}
+                    \end{minipage} 
+                \end{figure}
 
         \section{Tipps und Tricks zu Machine Learning und SVMs}
             Sämtlicher Code, Erläuterungen und das Präsentations-Skript sind online verfügbar: \url{https://github.com/NIPE-SYSTEMS/support-vector-machine}
