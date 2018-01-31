@@ -1,0 +1,178 @@
+\documentclass[10pt,a4paper]{scrartcl}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+%Language settings
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage[babel, german=quotes]{csquotes}
+
+%Fonts
+\usepackage{lmodern}
+\usepackage{mathrsfs}
+
+%Packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{multicol}
+\usepackage{parskip}
+
+%Biblatex
+\usepackage{hyperref}
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{bibliography.bib}
+
+%Title, author, etc.
+\title{Support Vector Machines mit Kerneln}
+\author{Jonas Krug, Hendrik Sieck und Tim Schlottmann \\ TU Hamburg}
+\date{\today}
+
+\begin{document}
+
+    \maketitle
+
+    % \begin{multicols}{2}
+
+        \section{Grundlagen}
+            Support Vector Maschinen sind ein binärer Klassifizierer. Datenmengen werden also in zwei Klassen eingeteilt. Zur Unterteilung der Klassen wird eine Hyperebene benutzt. Wie die Unterteilung stattfindet soll in diesem Abschnitt erklärt werden.
+
+            % \subsection{Definitionen}
+            Folgende Definitionen bilden die Grundlage für SVMs:
+
+            \begin{itemize}
+                \item Anzahl an Datenpunkten: $ m \in \mathbb{R} $
+                \item Input: $ \boldsymbol{x} \in \mathbb{R}^N $
+                % \item Input $ \boldsymbol{x} := \{ \boldsymbol{x}_1, \dots, \boldsymbol{x}_m \} \text{, } \boldsymbol{x} \in \mathbb{R}^N $
+                \item Output: $ y \in \{ -1, +1 \} $
+                \item Trainingsset: $S \in (\mathbb{R}^N \times \{ -1, +1 \})^m $
+            \end{itemize}
+
+            Ziel ist es, eine Hypothese zu finden, die einen Input $\boldsymbol{x}$ auf eine der beiden Klassen $y$ abbildet: \begin{align*}
+                h: \mathbb{R}^N &\to \{ +1, -1 \} \\
+                \boldsymbol{x} &\mapsto y
+            \end{align*}
+
+            \subsection{Hyperebene}
+                Betrachten wir ein Trainingsset $S$ mit eingezeichneter Hyperebene $H$ wie in Abbildung \ref{fig:hyperplanes}. Es fällt auf, dass ein Spalt (engl. margin) entsteht, dessen Grenzen sich durch zwei weitere Hilfsebenen $H_+$ und $H_-$ darstellen lassen. $H_+$ und $H_-$ sind hierbei parallel zu $H$. In Abbildung \ref{fig:hyperplanes} ist $H_+$ die Begrenzung zur $+1$-Klasse und $H_-$ die Begrenzung zur $-1$-Klasse. Die Vektoren, durch die die Hilfsebenen verlaufen, heißen Supportvektoren und sind in der Abbildung schwarz umrandet.
+                \begin{figure}[H]
+                    \centering{
+                        \includegraphics[width=0.66\columnwidth]{img_tim/Folie7.PNG}
+                        \caption{Hyperebene $H$ zur Trennung der beiden Klassen $+1$ und $-1$}
+                        \label{fig:hyperplanes}
+                    }
+                \end{figure}
+                Nun gilt es die Hypothese zu finden. Hierfür betrachten wir zuerst die Hyperbenengleichung $H = \boldsymbol{w}^T \boldsymbol{x} + b = 0$. 
+                Hierbei werden die Parameter $\boldsymbol{w}$ und $b$ so gewählt, dass für die Supportvektoren gilt: $y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) = 1$
+                So lässt sich die Hypothese wie folgt definieren:
+                \begin{equation*}
+                    h(\boldsymbol{x}_i) = \begin{cases}
+                        +1 & \text{ wenn } \boldsymbol{w}^T \boldsymbol{x}_i + b \geq 0 \\
+                        -1 & \text{ wenn } \boldsymbol{w}^T \boldsymbol{x}_i + b \leq 0
+                    \end{cases}
+                \end{equation*}
+
+            \subsection{Minimierungsproblem}
+                Die algorithmische Bestimmung der Parameter $\boldsymbol{w}$ und $b$ erfolgt über ein Minimierungsproblem. Die Spalte zwischen den Hilfsebenen $H_+$ und $H_-$ soll maximiert werden. Über die Projektionseigenschaft des Skalarproduktes lässt sich die Breite der Spalte über den Ausdruck $\frac{2}{\Vert \boldsymbol{w} \Vert}$ bestimmen. Die Breite der Spalte soll nun maximiert werden, was zu folgendem Minimierungsproblem führt:
+                \begin{align*}
+                    & \max_{\boldsymbol{w}, b} \frac{2}{\Vert \boldsymbol{w} \Vert} \Leftrightarrow \min_{\boldsymbol{w}, b} \Vert \boldsymbol{w} \Vert \Leftrightarrow \min_{\boldsymbol{w}, b} \frac{1}{2} \Vert \boldsymbol{w} \Vert^2 \\
+                    & \text{u.d.N. } y_i ( \boldsymbol{w}^T \boldsymbol{x}_i + b ) - 1 \geq 0
+                \end{align*}
+                Durch die Verwendung von Lagrange Multiplikatoren lässt sich das Minimierungsproblem in eine Form bringen, die nur noch von der Langrangevariable $\alpha$ sowie den Supportvektoren bzw. den neu zu klassifizierenden Vektoren abhängt:
+                \begin{align*}
+                    \boldsymbol{w} &= \sum_i \alpha_i y_i \boldsymbol{x}_i \\
+                    \sum_i \alpha_i y_i &= 0 \\
+                    h(\boldsymbol{x}) &= \begin{cases}
+                        +1 & \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \geq 0 \\
+                        -1 & \sum_i \alpha_i y_i \boldsymbol{x}_i^T \boldsymbol{x} + b \leq 0
+                    \end{cases}
+                \end{align*}
+
+        \section{Kernel Trick}
+            \subsection{Abbildfunktion}
+                Mit der gezeigten Definition von SVMs lassen sich linear separierbare Daten gut trennen.
+                Es ist jedoch nicht möglich, Daten mit komplexeren Anordnungen mit hoher Wahrscheinlichkeit richtig zu klassifizieren. \\
+                
+                Mit Hilfe einer Abbildfunktion $\phi(\vec{x})$ lässt sich diese Einschränkung umgehen. Hierzu transformieren wir den Eingabevector $\vec{x}$ in einen neuen Raum, in dem eine lineare Trennung möglich ist. \\
+                
+                \begin{align*}
+                    \phi: \mathbb{R}^{n} & \to \mathbb{R}^{m} \\
+                    \boldsymbol{x} & \mapsto \boldsymbol{f}
+                \end{align*}
+                
+                Um die transformierten Vektoren für die SVM zu nutzen, ersetzen wir das Skalarprodukt in Minimierungs- und Hypothesenfunktion durch ein Skalarprodukt der transformierten Vektoren. \\
+                
+            \subsection{Kernel}
+                Wenn die Dimension der transformierten Vektoren größer ist als die der Ursprungsvektoren, erhöht dies den Rechenaufwand.
+                Zusätzlich wird $\phi(\vec{x})$ nur für das Skalarprodukt genutzt. \\
+                
+                Wir definieren daher einen sogenannten Kernel, der das gleiche Ergebnis wie das Skalarprodukt der transformierten Vektoren aufweist, aber einfacher zu berechnen ist.
+                
+                \begin{align*}
+                    K&(\boldsymbol{v}, \boldsymbol{w}) = \phi(\boldsymbol{v})^{T} \phi(\boldsymbol{w})\\
+                    K&: \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}
+                \end{align*}
+                
+            \subsection{Verschiedene Kernel}
+                In der Praxis wird der lineare, der polynomielle und der Gauß'sche Kernel am meisten genutzt.
+                \subsubsection{Linear}
+                    Der Lineare Kernel ist equivalent zu einer SVM ohne Kernel. \\
+                    Er ist in der Lage, linear trennbare Daten zu klassifizieren (siehe Abbildung \ref{ker:lin}). \\
+                    $K(\boldsymbol{v}, \boldsymbol{w}) = \boldsymbol{v}^{\, T} \boldsymbol{w}$
+                
+                \subsubsection{Polynomiell}
+                Der polynomielle Kernel korespondiert zu einem $\phi$, welches die Daten auf einer polynomiellen Fläche verteilt.
+                Er ermöglicht die Klassifizierung von Daten welche von Kurven getrennt werden können (siehe Abbildung \ref{ker:pol}). \\
+                $K(\boldsymbol{v}, \boldsymbol{w}) = (\boldsymbol{v}^{\, T} \boldsymbol{w} + c)^{d}$
+                
+                \subsubsection{Gauß}
+                Der Gauß'sche Kernel nutzt die Geometrische Distanz zu anderen Datenpunkten zur Klassifizierung.
+                Um den maximalen Abstand der zu vergleichenden Punkte festzulegen, kann der Parameter $\phi$ angepasst werden (siehe Abbildung \ref{ker:sig}). \\
+                Er ermöglicht, die Daten in verschiedenen Cluster zu trennen (siehe Abbildung \ref{ker:gau}). \\
+                $K(\boldsymbol{v}, \boldsymbol{w}) = \exp(-\frac{\lvert\lvert\boldsymbol{v} - \boldsymbol{w}\rvert\rvert^{2}}{2\sigma^{2}})$ \\\
+                
+                \begin{figure}[ht] 
+                    \label{kernels} 
+                    \begin{minipage}[b]{0.5\linewidth}
+                        \centering
+                        \includegraphics[width=.8\textwidth]{img_kernel/kernelLin.png}
+                        \caption{SVM mit linearem Kernel}
+                        \vspace{4ex}
+                        \label{ker:lin}
+                    \end{minipage}
+                    \begin{minipage}[b]{0.5\linewidth}
+                        \centering
+                        \includegraphics[width=.8\textwidth]{img_kernel/kernelPol.png}
+                        \caption{SVM mit Polynomiellen Kernel}
+                        \vspace{4ex}
+                        \label{ker:pol}
+                    \end{minipage}
+                    \begin{minipage}[b]{0.5\linewidth}
+                        \centering
+                        \includegraphics[width=.8\textwidth]{img_kernel/kernelGau.png}
+                        \caption{SVM mit Gauß'schem Kernel}
+                        \vspace{4ex}
+                        \label{ker:gau}
+                    \end{minipage}
+                    \begin{minipage}[b]{0.5\linewidth}
+                        \centering
+                        \includegraphics[width=.8\textwidth]{img_kernel/sigmaGau.png}
+                        \caption{Verlauf des Gauß'schen Kernels}
+                        \vspace{4ex}
+                        \label{ker:sig}
+                    \end{minipage}
+                \end{figure}
+
+        \section{Tipps und Tricks zu Machine Learning und SVMs}
+            Sämtlicher Code, Erläuterungen und das Präsentations-Skript sind online verfügbar: \url{https://github.com/NIPE-SYSTEMS/support-vector-machine}
+            
+            Unten auf der Repository-Seite (siehe Link) befindet sich eine Beschreibung zu allen wichtigen Dateien im Repository.
+
+
+    % \end{multicols}
+\end{document}
