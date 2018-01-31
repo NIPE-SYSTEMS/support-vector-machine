@@ -122,18 +122,18 @@
                 In der Praxis wird der lineare, der polynomielle und der Gauß'sche Kernel am meisten genutzt.
                 \subsubsection{Linear}
                     Der Lineare Kernel ist equivalent zu einer SVM ohne Kernel. \\
-                    Er ist in der Lage, linear trennbare Daten zu klassifizieren \ref{ker:lin}. \\
+                    Er ist in der Lage, linear trennbare Daten zu klassifizieren (siehe Abbildung \ref{ker:lin}). \\
                     $K(\boldsymbol{v}, \boldsymbol{w}) = \boldsymbol{v}^{\, T} \boldsymbol{w}$
                 
                 \subsubsection{Polynomiell}
                 Der polynomielle Kernel korespondiert zu einem $\phi$, welches die Daten auf einer polynomiellen Fläche verteilt.
-                Er ermöglicht die Klassifizierung von Daten welche von Kurven getrennt werden können \ref{ker:pol}. \\
+                Er ermöglicht die Klassifizierung von Daten welche von Kurven getrennt werden können (siehe Abbildung \ref{ker:pol}). \\
                 $K(\boldsymbol{v}, \boldsymbol{w}) = (\boldsymbol{v}^{\, T} \boldsymbol{w} + c)^{d}$
                 
                 \subsubsection{Gauß}
                 Der Gauß'sche Kernel nutzt die Geometrische Distanz zu anderen Datenpunkten zur Klassifizierung.
-                Um den maximalen Abstand der zu vergleichenden Punkte festzulegen, kann der Parameter $\phi$ angepasst werden \ref{ker:sig}. \\
-                Er ermöglicht, die Daten in verschiedenen Cluster zu trennen \ref{ker:gau}. \\
+                Um den maximalen Abstand der zu vergleichenden Punkte festzulegen, kann der Parameter $\phi$ angepasst werden (siehe Abbildung \ref{ker:sig}). \\
+                Er ermöglicht, die Daten in verschiedenen Cluster zu trennen (siehe Abbildung \ref{ker:gau}). \\
                 $K(\boldsymbol{v}, \boldsymbol{w}) = \exp(-\frac{\lvert\lvert\boldsymbol{v} - \boldsymbol{w}\rvert\rvert^{2}}{2\sigma^{2}})$ \\\
                 
                 \begin{figure}[ht] 
